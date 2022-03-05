@@ -146,7 +146,6 @@ func (s *OomStore) applyGroup(ctx context.Context, tx metadata.DBStore, newGroup
 			NewSnapshotInterval: opt.NewSnapshotInterval,
 			NewDescription:      &newGroup.Description,
 		})
-
 	}
 
 	return nil, nil
