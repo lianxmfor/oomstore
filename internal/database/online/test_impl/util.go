@@ -2,16 +2,17 @@ package test_impl
 
 import (
 	"context"
-	"math/rand"
+	"crypto/rand"
+	"math/big"
 	"testing"
 	"time"
 
-	"github.com/oom-ai/oomstore/pkg/oomstore/types"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
 	"github.com/oom-ai/oomstore/internal/database/dbutil"
 	"github.com/oom-ai/oomstore/internal/database/online"
+	"github.com/oom-ai/oomstore/pkg/oomstore/types"
 )
 
 type PrepareStoreFn func(*testing.T) (context.Context, online.Store)
@@ -97,7 +98,12 @@ func init() {
 
 	var data []types.ExportRecord
 	for i := 0; i < 100; i++ {
-		record := []interface{}{dbutil.RandString(10), rand.Float64()}
+		n, err := rand.Int(rand.Reader, big.NewInt(1000))
+		if err != nil {
+			panic(err)
+		}
+
+		record := []interface{}{dbutil.RandString(10), float64(n.Int64())}
 		data = append(data, types.ExportRecord{Record: record, Error: nil})
 	}
 	SampleMedium = Sample{
