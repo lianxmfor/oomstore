@@ -6,12 +6,12 @@ import (
 	"strings"
 
 	"github.com/jmoiron/sqlx"
-	"github.com/oom-ai/oomstore/pkg/errdefs"
 
+	"github.com/oom-ai/oomstore/pkg/errdefs"
 	"github.com/oom-ai/oomstore/pkg/oomstore/types"
 )
 
-func BuildConditions(equal map[string]interface{}, in map[string]interface{}) ([]string, []interface{}, error) {
+func BuildConditions(equal, in map[string]interface{}) ([]string, []interface{}, error) {
 	cond := make([]string, 0)
 	args := make([]interface{}, 0)
 	for key, value := range equal {

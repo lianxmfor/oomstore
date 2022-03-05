@@ -8,7 +8,7 @@ import (
 
 const SepFullFeatureName = "."
 
-func ComposeFullFeatureName(groupName string, featureName string) string {
+func ComposeFullFeatureName(groupName, featureName string) string {
 	return groupName + SepFullFeatureName + featureName
 }
 
