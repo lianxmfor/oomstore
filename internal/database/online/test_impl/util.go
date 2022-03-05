@@ -32,7 +32,6 @@ var SampleMedium Sample
 var SampleStream Sample
 
 func init() {
-	rand.Seed(time.Now().UnixNano())
 	entity := types.Entity{ID: 1, Name: "user"}
 	group1 := types.Group{ID: 1, Category: types.CategoryBatch, Entity: &entity}
 	group2 := types.Group{ID: 2, Category: types.CategoryBatch, Entity: &entity}
